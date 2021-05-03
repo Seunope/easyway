@@ -9,7 +9,7 @@ export default () => (
   <DashboardStack.Navigator
     headerMode="none"
     drawerType="slide"
-    initialRouteName="MapView">
+    initialRouteName="UserInput">
     <DashboardStack.Screen name="UserInput" component={UserInput} />
     <DashboardStack.Screen name="MapView" component={MapView} />
 

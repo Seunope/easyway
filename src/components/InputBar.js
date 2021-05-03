@@ -16,15 +16,11 @@ export default (props) => {
           margin={props.margin}
           disabled={props.disabled}
           keyboardType={props.keyboardType}
+          placeholderTextColor={primaryColors.gray}
           placeholder={props.placeholder}
           onChangeText={props.onChangeText}
           marginHorizontal={props.marginHorizontal}
           maxLength={props.maxLength}
-          placeholderTextColor={
-            props.placeholderTextColor
-              ? props.placeholderTextColor
-              : primaryColors.gray
-          }
           secureTextEntry={null}
           value={props.value}
         />

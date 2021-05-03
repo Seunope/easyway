@@ -1,18 +1,16 @@
 import axios from 'axios';
-import {GetDataFromStorage} from '../functions';
 
-axios.interceptors.request.use(async (config) => {
+axios.interceptors.request.use(async config => {
   if (config) {
-    let token = await GetDataFromStorage('token');
     //console.log(token)
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;
+    // }
   }
   return config;
 });
 
-export const GetFunc = (path) => {
+export const GetFunc = path => {
   return new Promise((resolve, reject) => {
     axios
       .get(path)
@@ -20,6 +18,7 @@ export const GetFunc = (path) => {
         return resolve(data);
       })
       .catch(({...error}) => {
+        console.log('error', error);
         return error.response
           ? reject(error.response.data)
           : reject('Network error');
@@ -27,7 +26,7 @@ export const GetFunc = (path) => {
   });
 };
 
-export const DelFunc = (path) => {
+export const DelFunc = path => {
   return new Promise((resolve, reject) => {
     axios
       .delete(path)

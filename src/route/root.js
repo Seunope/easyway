@@ -9,7 +9,7 @@ const RootStackScreen = () => {
 
   return (
     <RootStack.Navigator headerMode="none" mode="modal">
-      <RootStack.Screen name="Welcome" component={Welcome} />
+      {/* <RootStack.Screen name="Welcome" component={Welcome} /> */}
       <RootStack.Screen name="DashboardStack" component={DashboardStack} />
     </RootStack.Navigator>
   );

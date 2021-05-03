@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import styles from './style';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 import {MAPBOX_TOKEN} from '../../../../env';
@@ -14,7 +14,7 @@ const directionsClient = MapboxDirectionsFactory({accessToken});
 export default () => {
   const [route, setRoute] = useState(null);
 
-  const startingCoordinates = [3.33624, 6.57901];
+  const startingCoordinates = [3.35691, 6.685606666666667];
   const destinationCoordinates = [3.3750014, 6.5367877];
   const startDestinationPoints = [startingCoordinates, destinationCoordinates];
 
@@ -61,10 +61,16 @@ export default () => {
   return (
     <View style={styles.page}>
       <View style={styles.container}>
+        {/* <MapboxGL.UserLocation
+          ref={location => {
+            console.log({location});
+          }}
+        /> */}
         <MapboxGL.MapView style={styles.map}>
           <MapboxGL.Camera
             zoomLevel={11}
             centerCoordinate={startingCoordinates}
+            followUserLocation={true}
           />
           {renderAnnotations()}
           {route && (
