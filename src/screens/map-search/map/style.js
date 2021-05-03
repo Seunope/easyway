@@ -2,34 +2,23 @@ import {StyleSheet} from 'react-native';
 import {primaryColors} from '../../../config/colors';
 
 export default StyleSheet.create({
-  container: {
+  page: {
     flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
-    backgroundColor: primaryColors.white,
-    padding: 20,
   },
-  linkText: {
-    marginTop: 5,
-    padding: 10,
-    color: primaryColors.navyBlue,
-    textDecorationLine: 'underline',
+  container: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'blue',
   },
-  subTitle: {
-    margin: 5,
-    //color: primaryColors.blue,
-    textAlign: 'center',
+  map: {
+    flex: 1,
   },
-  errorText: {
-    color: 'red',
-    fontSize: 11,
-  },
-  buttonRed: {
-    backgroundColor: primaryColors.red,
-    marginTop: 20,
-    paddingLeft: 90,
-    paddingRight: 90,
-    marginBottom: 15,
-    borderRadius: 10,
-  },
+  locationPointer: {
+    height: 20,
+    width: 20,
+    backgroundColor: primaryColors.blue,
+    borderRadius: 40,
+    borderColor: primaryColors.white,
+    borderWidth: 3,
+  }, 
 });
