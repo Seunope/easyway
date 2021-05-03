@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'native-base';
+import {Container, Text, View} from 'native-base';
 import {StyleSheet} from 'react-native';
 import {primaryColors} from '../config/colors';
 import {moderateScale} from '../config/scaling';
@@ -7,9 +7,12 @@ import { primaryFont} from '../config/fonts'
 
 export default (props) => {
   return (
-    <View>
+    <Container>
+<View>
       <Text style={styles.title}>{props.titleTxt}</Text>
     </View>
+    </Container>
+    
   );
 };
 

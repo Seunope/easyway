@@ -4,59 +4,22 @@ import {View, Text, H1, Container, Button} from 'native-base';
 import styles from './style';
 import {primaryColors} from '../../config/colors';
 import Toast from 'react-native-simple-toast';
+import TitleText from '../../components/TitleText';
 
-
-
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //showRealApp: false,
-    };
-  }
-  _renderItem = ({item}) => {
-    return (
-      <View style={styles.slide}>
-        <Image source={item.image} style={styles.image} />
-        <View style={styles.containerText}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.text} note>
-            {item.text}
-          </Text>
-        </View>
+export default () => {
+  return (
+    <Container>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={primaryColors.grayWhite}
+      />
+      <View style={styles.container}>
+        <Text style={styles.logo}>EasyWay</Text>
+        <Text>Going some place? Find and Go!</Text>
       </View>
-    );
-  };
-
-  _renderNextButton = () => {
-    return (
-      <Button small style={styles.navButtonNext}>
-        <Text>Next</Text>
-      </Button>
-    );
-  };
-  _renderDoneButton = () => {
-    return (
-      <Button
-        small
-        style={styles.navButtonDone}
-        onPress={() => {
-            this.props.navigation.navigate('AuthStackScreen');
-        }}>
-        <Text>Start</Text>
-      </Button>
-    );
-  };
-
-  render() {
-    return (
-      <Container>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={primaryColors.grayWhite}
-        />
-        <Text>I dey here</Text>
-      </Container>
-    );
-  }
-}
+      <View  style={styles.containerPower}>
+        <Text note>Powered By <Text style={styles.varens}>Varens</Text></Text>
+      </View>
+    </Container>
+  );
+};
