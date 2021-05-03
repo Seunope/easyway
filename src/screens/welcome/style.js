@@ -1,22 +1,29 @@
 import {StyleSheet} from 'react-native';
 import {primaryColors} from '../../config/colors';
-import { primaryFont } from '../../config/fonts';
+import {primaryFont} from '../../config/fonts';
 import {moderateScale} from '../../config/scaling';
 
 export default StyleSheet.create({
-
   container: {
-    flex: 1,
+    flex: 5,
     backgroundColor: primaryColors.white,
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   containerPower: {
+    //flex: 1,
     backgroundColor: primaryColors.white,
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  containerLoading: {
+    flex: 2,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: primaryColors.white,
   },
 
   logo: {
@@ -25,11 +32,12 @@ export default StyleSheet.create({
     fontFamily: primaryFont.muliExtraBold,
     color: primaryColors.black,
   },
+  slogan: {
+    marginBottom: 40,
+  },
 
-  varens:{
+  varens: {
     color: primaryColors.orange,
     fontFamily: primaryFont.muliBold,
-
-
-  }
+  },
 });

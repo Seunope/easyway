@@ -1,14 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Welcome from '../screens/welcome/welcome';
+import UserInput from '../screens/map-search/user-input/user_input';
+import MapView from '../screens/map-search/map/map';
 
 
 const DashboardStack = createStackNavigator();
 export default () => (
   <DashboardStack.Navigator
-    //headerMode="none"
+    headerMode="none"
     drawerType="slide"
-    initialRouteName="Welcome">
-    <DashboardStack.Screen name="Welcome" component={Welcome} />
-</DashboardStack.Navigator>
+    initialRouteName="UserInput">
+    <DashboardStack.Screen name="UserInput" component={UserInput} />
+    <DashboardStack.Screen name="MapView" component={MapView} />
+
+  </DashboardStack.Navigator>
 );

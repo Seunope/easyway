@@ -1,12 +1,20 @@
-import React from 'react';
-import {StatusBar, Image} from 'react-native';
-import {View, Text, H1, Container, Button} from 'native-base';
+import React, {useEffect, useState} from 'react';
+import {StatusBar} from 'react-native';
+import {View, Text, Container} from 'native-base';
 import styles from './style';
 import {primaryColors} from '../../config/colors';
-import Toast from 'react-native-simple-toast';
-import TitleText from '../../components/TitleText';
+import {Wave} from 'react-native-animated-spinkit';
 
-export default () => {
+export default (props) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+      props.navigation.navigate('DashboardStack');
+    }, 5000);
+  }, []);
+
   return (
     <Container>
       <StatusBar
@@ -17,8 +25,13 @@ export default () => {
         <Text style={styles.logo}>EasyWay</Text>
         <Text>Going some place? Find and Go!</Text>
       </View>
-      <View  style={styles.containerPower}>
-        <Text note>Powered By <Text style={styles.varens}>Varens</Text></Text>
+      <View style={styles.containerLoading}>
+        {loading ? <Wave size={60} color={primaryColors.orangeDark} /> : null}
+      </View>
+      <View style={styles.containerPower}>
+        <Text note>
+          Powered By <Text style={styles.varens}>Varens</Text>
+        </Text>
       </View>
     </Container>
   );
