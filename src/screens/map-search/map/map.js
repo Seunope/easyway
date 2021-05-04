@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import styles from './style';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-import {MAPBOX_TOKEN} from '../../../../env';
+import {MAP_BOX_TOKEN} from '../../../../env';
 import {lineString as makeLineString} from '@turf/helpers';
 import MapboxDirectionsFactory from '@mapbox/mapbox-sdk/services/directions';
 import {primaryColors} from '../../../config/colors';
 
-const accessToken = MAPBOX_TOKEN;
+const accessToken = MAP_BOX_TOKEN;
 MapboxGL.setAccessToken(accessToken);
 const directionsClient = MapboxDirectionsFactory({accessToken});
 

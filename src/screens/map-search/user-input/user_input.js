@@ -1,29 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import styles from './style';
-import {StatusBar, Keyboard, PermissionsAndroid, Platform} from 'react-native';
-import {Text, Container, View, Button, Icon, Spinner} from 'native-base';
+import {StatusBar, FlatList, TouchableOpacity} from 'react-native';
+import {Text, Container, View} from 'native-base';
 import Toast from 'react-native-simple-toast';
-import {StackActions} from '@react-navigation/native';
-import ArvoButton from '../../../components/Button';
 import InputBar from '../../../components/InputBar';
 import TitleText from '../../../components/TitleText';
 import ErrorText from '../../../components/ErrorText';
 import {primaryColors} from '../../../config/colors';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-import {MAPBOX_TOKEN} from '../../../../env';
+import {MAP_BOX_TOKEN} from '../../../../env';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
-import {GEO_DECODING} from '../../../config/api/http';
-const accessToken = MAPBOX_TOKEN;
+import {FORWARD_GEO_CODING, REVERSE_GEO_CODING} from '../../../config/api/http';
+import {Flow} from 'react-native-animated-spinkit';
+
+const accessToken = MAP_BOX_TOKEN;
 MapboxGL.setAccessToken(accessToken);
 
-export default () => {
-  const [currentCoords, setCurrentCoords] = useState([]);
-  const [address, setAddress] = useState('');
+export default props => {
+  const [currentCoords, setCurrentCoords] = useState({
+    longitude: 3.3615269,
+    latitude: 6.526356,
+  });
+  const [myLocation, setMyLocation] = useState('Appa Lagos');
+  const [address, setAddress] = useState('Appa Lagos');
   const [errorMessage, setErrorMessage] = useState('');
-  const [searchTimer, setSearchTimer] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [remoteData, setRemoteData] = useState();
 
   useEffect(() => {
     handlePermission();
+    getUserLocation();
     const timeoutId = setTimeout(() => doSearch(), 1000);
     return () => clearTimeout(timeoutId);
   }, [address]);
@@ -53,50 +59,47 @@ export default () => {
       });
   };
 
-  const doSearch = async () => {
-    // Keyboard.dismiss();
-    if (validateFailed(address)) {
-      return;
+  const onSuccess = responseData => {
+    if (responseData && responseData.features) {
+      responseData.features.length !== 0
+        ? setRemoteData(responseData.features)
+        : setErrorMessage('Address not found. Please edit entires');
     }
-    let data = {address: address};
-    console.log(data);
-    let responseData = await GEO_DECODING(data);
-    console.log('responseData:', responseData);
-    // if (responseData.success) {
-    //   this.onSuccess(responseData, password, telephone);
-    // } else {
-    //   this.onError(responseData);
-    // }
-  };
-  const manageInput = text => {
-    console.log('someeeee');
-  };
-  const validateFailed = input => {
-    let msg = null;
-    setErrorMessage(msg);
-    if (!input) {
-      msg = 'Whoops! You forgot to supply entires';
-      Toast.show(msg, Toast.LONG);
-      setErrorMessage(msg);
-      return true;
-    }
+    return;
   };
 
-  const onSuccess = async responseData => {
-    console.log(responseData);
+  const doSearch = async () => {
+    setErrorMessage('');
+    const data = {address: address};
+    const responseData = await FORWARD_GEO_CODING(data);
+    if (responseData.type) {
+      return onSuccess(responseData);
+    } else {
+      return onError(responseData);
+    }
+    // console.log('responseData:', responseData);
+  };
+
+  const getUserLocation = async () => {
+    console.log('currentCoords', currentCoords);
+    const responseData = await REVERSE_GEO_CODING(currentCoords);
+
+    if (responseData && responseData.features) {
+      responseData.features.length
+        ? setMyLocation(responseData.features[0].place_name)
+        : null;
+    } else {
+      onError(responseData);
+    }
+    return;
   };
 
   const onError = responseData => {
-    let msg = null;
+    let msg = '';
     if (responseData.error) {
       msg = responseData.error;
-    } else if (responseData.errors) {
-      msg = '';
-      if (responseData.errors.password) {
-        msg = msg + responseData.errors.password;
-      } else if (responseData.errors.telephone) {
-        msg = msg + responseData.errors.telephone;
-      }
+    } else if (responseData.message) {
+      msg = responseData.message;
     } else {
       msg = 'Something got broken! Try again';
       if (responseData) {
@@ -104,7 +107,7 @@ export default () => {
       }
     }
     Toast.show(msg, Toast.LONG);
-    this.setState({errorMsg: msg});
+    setErrorMessage(msg);
     return;
   };
 
@@ -118,7 +121,11 @@ export default () => {
         renderMode="normal"
         visible={false}
         onUpdate={location => {
-          const coords = [location.coords.longitude, location.coords.latitude];
+          const coords = {
+            longitude: location.coords.longitude,
+            latitude: location.coords.latitude,
+          };
+          //console.log('coords', coords);
           setCurrentCoords(coords); // current location is here
         }}
       />
@@ -126,7 +133,11 @@ export default () => {
       <View style={styles.container}>
         <TitleText titleTxt="Search!" />
 
-        <InputBar textLabel="Origin" placeholder="Current location" />
+        <InputBar
+          textLabel="Origin"
+          placeholder="Current location"
+          value={myLocation}
+        />
 
         <InputBar
           textLabel="Your destination"
@@ -135,8 +146,30 @@ export default () => {
           onChangeText={text => setAddress(text)}
           value={address}
         />
+        <ErrorText message={errorMessage} />
 
-        <ErrorText message="" />
+        {loading ? (
+          <View style={styles.loadingModal}>
+            <Flow size={60} color={primaryColors.orangeDark} />
+          </View>
+        ) : (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={remoteData}
+            renderItem={({item}) => (
+              <TouchableOpacity
+                style={styles.itemContainer}
+                onPress={() =>
+                  props.navigation.navigate('DashboardStack', {
+                    screen: 'MapView',
+                  })
+                }>
+                <Text style={styles.textSmall}>{item.place_name}</Text>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
       </View>
     </Container>
   );

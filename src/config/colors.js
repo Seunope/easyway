@@ -3,10 +3,10 @@ export const primaryColors = {
   // oliveGreen: '#B5CC18',
   // green: '#21BA45',
   // darkGray: '#767676',
-  // grayWhite: '#F2F2F2',
   
   // redLighter: '#ffebee',
-
+  
+  grayWhite: '#F2F2F2',
   gray: '#D8D8D8',
   red: '#FF2D55',
   black: '#000000',
