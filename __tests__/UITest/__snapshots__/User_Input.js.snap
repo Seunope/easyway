@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {},
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "flex": 1,
+          "padding": 20,
+        },
+      ]
+    }
+  >
+    <View
+      style={Object {}}
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 16,
+            },
+            Object {
+              "color": "#000000",
+              "fontFamily": "Muli-ExtraBold",
+              "fontSize": 55,
+              "marginBottom": 10,
+              "marginTop": 10,
+              "textAlign": "left",
+            },
+          ]
+        }
+        uppercase={false}
+      >
+        Search!
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {},
+          Object {
+            "alignItems": "flex-start",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 16,
+            },
+            Object {
+              "color": "#000000",
+              "fontSize": 15.714285714285714,
+            },
+          ]
+        }
+        uppercase={false}
+      >
+        Origin
+      </Text>
+      <View
+        accessible={true}
+        focusable={false}
+        forwardedRef={[Function]}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderBottomWidth": 1,
+            "borderColor": "#EEEEEE",
+            "borderLeftWidth": 1,
+            "borderRadius": 35,
+            "borderRightWidth": 1,
+            "borderTopWidth": 1,
+            "borderWidth": undefined,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "margin": 10,
+            "marginLeft": 2,
+            "opacity": 1,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          editable={true}
+          placeholder="Current location"
+          placeholderTextColor="#D8D8D8"
+          rejectResponderTermination={true}
+          secureTextEntry={null}
+          style={
+            Object {
+              "color": "#000",
+              "flex": 1,
+              "fontSize": 17,
+              "height": 50,
+              "paddingLeft": 8,
+              "paddingRight": 5,
+              "top": 1.5,
+            }
+          }
+          underlineColorAndroid="rgba(0,0,0,0)"
+          value="Lagos"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {},
+          Object {
+            "alignItems": "flex-start",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 16,
+            },
+            Object {
+              "color": "#000000",
+              "fontSize": 15.714285714285714,
+            },
+          ]
+        }
+        uppercase={false}
+      >
+        Your destination
+      </Text>
+      <View
+        accessible={true}
+        focusable={false}
+        forwardedRef={[Function]}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderBottomWidth": 1,
+            "borderColor": "#EEEEEE",
+            "borderLeftWidth": 1,
+            "borderRadius": 35,
+            "borderRightWidth": 1,
+            "borderTopWidth": 1,
+            "borderWidth": undefined,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "margin": 10,
+            "marginLeft": 2,
+            "opacity": 1,
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          editable={true}
+          onChangeText={[Function]}
+          placeholder="Your destination"
+          placeholderTextColor="#D8D8D8"
+          rejectResponderTermination={true}
+          secureTextEntry={null}
+          style={
+            Object {
+              "color": "#000",
+              "flex": 1,
+              "fontSize": 17,
+              "height": 50,
+              "paddingLeft": 8,
+              "paddingRight": 5,
+              "top": 1.5,
+            }
+          }
+          underlineColorAndroid="rgba(0,0,0,0)"
+          value="Appa Lagos"
+        />
+      </View>
+    </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontFamily": "System",
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#FF2D55",
+            "fontSize": 17.285714285714285,
+          },
+        ]
+      }
+      uppercase={false}
+    >
+      
+    </Text>
+    <RCTScrollView
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      showsVerticalScrollIndicator={false}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View />
+    </RCTScrollView>
+  </View>
+</View>
+`;

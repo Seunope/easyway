@@ -15,7 +15,9 @@
     "@react-native-mapbox-gl/maps": "*",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
+    "@testing-library/react-native": "^7.2.0",
     "@turf/helpers": "^6.3.0",
+    "@types/jest": "^26.0.23",
     "axios": "^0.21.1",
     "native-base": "^2.15.2",
     "react": "17.0.1",
@@ -32,6 +34,7 @@
     "@babel/core": "^7.14.0",
     "@babel/runtime": "^7.14.0",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.1",
     "babel-jest": "^26.6.3",
     "eslint": "^7.25.0",
     "jest": "^26.6.3",
@@ -39,6 +42,16 @@
     "react-test-renderer": "17.0.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect",
+      "@react-native-mapbox-gl/maps/setup-jest"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-[a-z, -]*|@react-native|@react-native-community|@react-native-mapbox-gl|@codler|@react-native-picker|react-native|native-base-[a-z, -]*|react-native-[a-z, -]*)/)"
+    ],
+    "setupFiles": [
+      "./jest.setup.js"
+    ]
   }
 }

@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {},
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "flex": 5,
+          "justifyContent": "center",
+          "padding": 20,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontFamily": "System",
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#000000",
+            "fontFamily": "Muli-ExtraBold",
+            "fontSize": 62.857142857142854,
+            "marginBottom": 10,
+          },
+        ]
+      }
+      uppercase={false}
+    >
+      EasyWay
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#000",
+          "fontFamily": "System",
+          "fontSize": 16,
+        }
+      }
+      uppercase={false}
+    >
+      Going some place? Find and Go!
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {},
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "flex": 2,
+          "justifyContent": "flex-start",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "height": 60,
+            "justifyContent": "space-between",
+            "opacity": 1,
+            "width": 60,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FF6600",
+            "height": 60,
+            "transform": Array [
+              Object {
+                "scaleY": 0.5390648897816493,
+              },
+            ],
+            "width": 9,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FF6600",
+            "height": 60,
+            "transform": Array [
+              Object {
+                "scaleY": 0.9225028413716081,
+              },
+            ],
+            "width": 9,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FF6600",
+            "height": 60,
+            "transform": Array [
+              Object {
+                "scaleY": 0.9663215083723175,
+              },
+            ],
+            "width": 9,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FF6600",
+            "height": 60,
+            "transform": Array [
+              Object {
+                "scaleY": 0.6152958379564872,
+              },
+            ],
+            "width": 9,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FF6600",
+            "height": 60,
+            "transform": Array [
+              Object {
+                "scaleY": 0.4,
+              },
+            ],
+            "width": 9,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {},
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+      ]
+    }
+  >
+    <Text
+      note={true}
+      style={
+        Object {
+          "color": "#a7a7a7",
+          "fontFamily": "System",
+          "fontSize": 14,
+        }
+      }
+      uppercase={false}
+    >
+      Powered By 
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "System",
+              "fontSize": 16,
+            },
+            Object {
+              "color": "#FBBD08",
+              "fontFamily": "Muli-Bold",
+            },
+          ]
+        }
+        uppercase={false}
+      >
+        Varens
+      </Text>
+    </Text>
+  </View>
+</View>
+`;
