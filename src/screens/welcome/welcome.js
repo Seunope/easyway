@@ -5,13 +5,16 @@ import styles from './style';
 import {primaryColors} from '../../config/colors';
 import {Wave} from 'react-native-animated-spinkit';
 
-export default (props) => {
+export default props => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-      props.navigation.navigate('DashboardStack');
+      props.navigation.reset({
+        index: 0,
+        routes: [{name: 'DashboardStack'}],
+      });
     }, 5000);
   }, []);
 

@@ -11,11 +11,17 @@ const accessToken = MAP_BOX_TOKEN;
 MapboxGL.setAccessToken(accessToken);
 const directionsClient = MapboxDirectionsFactory({accessToken});
 
-export default () => {
+export default props => {
   const [route, setRoute] = useState(null);
 
-  const startingCoordinates = [3.35691, 6.685606666666667];
-  const destinationCoordinates = [3.3750014, 6.5367877];
+  const startingCoordinates = [
+    props.route.params.userCoordsLongitude,
+    props.route.params.userCoordsLatitude,
+  ];
+  const destinationCoordinates = [
+    props.route.params.longitude,
+    props.route.params.latitude,
+  ];
   const startDestinationPoints = [startingCoordinates, destinationCoordinates];
 
   useEffect(() => {
@@ -61,14 +67,9 @@ export default () => {
   return (
     <View style={styles.page}>
       <View style={styles.container}>
-        {/* <MapboxGL.UserLocation
-          ref={location => {
-            console.log({location});
-          }}
-        /> */}
         <MapboxGL.MapView style={styles.map}>
           <MapboxGL.Camera
-            zoomLevel={11}
+            zoomLevel={0}
             centerCoordinate={startingCoordinates}
             followUserLocation={true}
           />

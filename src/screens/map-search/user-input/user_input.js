@@ -18,10 +18,10 @@ MapboxGL.setAccessToken(accessToken);
 
 export default props => {
   const [currentCoords, setCurrentCoords] = useState({
-    longitude: 3.3615269,
-    latitude: 6.526356,
+    longitude: 0,
+    latitude: 0,
   });
-  const [myLocation, setMyLocation] = useState('Appa Lagos');
+  const [myLocation, setMyLocation] = useState('Lagos');
   const [address, setAddress] = useState('Appa Lagos');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -40,14 +40,11 @@ export default props => {
       fastInterval: 5000,
     })
       .then(data => {
-        console.log(data);
-        // The user has accepted to enable the location services
-        // data can be :
-        //  - "already-enabled" if the location services has been already enabled
-        //  - "enabled" if user has clicked on OK button in the popup
+        //console.log(data);
       })
       .catch(err => {
         console.log(err);
+        Toast.show('Accept permission to proceed', Toast.LONG);
 
         // The user has not accepted to enable the location services or something went wrong during the process
         // "err" : { "code" : "ERR00|ERR01|ERR02|ERR03", "message" : "message"}
@@ -72,12 +69,13 @@ export default props => {
     setErrorMessage('');
     const data = {address: address};
     const responseData = await FORWARD_GEO_CODING(data);
+    console.log('responseData:', responseData);
+
     if (responseData.type) {
       return onSuccess(responseData);
     } else {
       return onError(responseData);
     }
-    // console.log('responseData:', responseData);
   };
 
   const getUserLocation = async () => {
@@ -127,6 +125,7 @@ export default props => {
           };
           //console.log('coords', coords);
           setCurrentCoords(coords); // current location is here
+          getUserLocation();
         }}
       />
 
@@ -162,6 +161,12 @@ export default props => {
                 onPress={() =>
                   props.navigation.navigate('DashboardStack', {
                     screen: 'MapView',
+                    params: {
+                      longitude: item.center[0],
+                      latitude: item.center[1],
+                      userCoordsLongitude: currentCoords.longitude,
+                      userCoordsLatitude: currentCoords.latitude,
+                    },
                   })
                 }>
                 <Text style={styles.textSmall}>{item.place_name}</Text>
